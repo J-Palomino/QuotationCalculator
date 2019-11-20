@@ -1,13 +1,13 @@
 module.exports = function() {
   const mongoose = require("mongoose");
-  const MONGO_DB =
-    process.env.MONGODB_URI || "mongodb://localhost/fortheestimating";
+  require("dotenv").config();
 
   // Initialize MongoDB database using Mongoose
-  mongoose.connect(MONGO_DB, { useNewUrlParser: true });
-  mongoose.set("useFindAndModify", false);
-  // TODO: Perform database setup here (db connection and models)
+  mongoose.connect(process.env.MONGO_DB_CONNECTION, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+  });
 
-  const Garments = require("./models/Garments");
-  Garments.createCollection();
+  const Product = require("./models/product");
+  Product.createCollection();
 };

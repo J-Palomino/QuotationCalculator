@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const mongoose = require("mongoose");
 
-const Product = require("../server/database/models/product");
+const Product = require("../database/models/product");
 
 router.get("/", (req, res, next) => {
   Product.find()
